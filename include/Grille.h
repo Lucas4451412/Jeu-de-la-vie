@@ -23,21 +23,12 @@ private:
 
 public:
     // Crée par défaut une grille d'une seule case.
-    Grille() : Grille(1, 1) {}
+    Grille();
 
     // Crée une grille de h lignes et l colonnes.
-    Grille(int l, int h) : largeur(l), hauteur(h) {
-        if (l <= 0 || h <= 0) {
-            throw std::invalid_argument("Les dimensions doivent être positives.");
-        }
-
-        // Remplit la grille avec h lignes de l cellules chacune.
-        cellules.resize(h, std::vector<Cellule>(l));
-    }
+    Grille(int l, int h);
     
-    void activerModeTorique(bool actif = true) {
-        torique = actif;
-    }
+    void activerModeTorique(bool actif = true);
 
     int getlargeur() const;
     int gethauteur() const;

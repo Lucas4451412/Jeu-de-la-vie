@@ -29,18 +29,12 @@ public:
 class EtatVivante : public EtatCellule {
 public:
     // Renvoie toujours true puisque cet objet représente l'état vivant.
-    bool estVivante() const override {
-        return true;
-    }
+    bool estVivante() const override;
 };
 
 
 class EtatMorte : public EtatCellule{
 public:
-    bool estVivante() const override{
-        return false;
-    }
-
-    
+    bool estVivante() const override;   
 
 };
