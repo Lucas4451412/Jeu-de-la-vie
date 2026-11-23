@@ -2,6 +2,20 @@
 #include "RegleEvolution.h"
 #include <stdexcept>
 
+Grille::Grille() : Grille(1, 1) {}
+
+Grille::Grille(int l, int h) : largeur(l), hauteur(h) {
+        if (l <= 0 || h <= 0) {
+            throw std::invalid_argument("Les dimensions doivent être positives.");
+        }
+        // Remplit la grille avec h lignes de l cellules chacune.
+        cellules.resize(h, std::vector<Cellule>(l));
+    }
+
+void Grille::activerModeTorique(bool actif) {
+        torique = actif;
+    }
+
 // Vérifie que les coordonnées correspondent à une case de la grille.
 bool Grille::positionValide(int ligne, int colonne) const {
     if (ligne >= 0 && ligne < hauteur
