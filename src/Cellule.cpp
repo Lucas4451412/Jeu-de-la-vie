@@ -1,14 +1,11 @@
 #include "Cellule.h"
 
-Cellule::Cellule() {
-    static EtatMorte etatMort;
-    etat = &etatMort;
-}
+Cellule::Cellule(bool etatInitial) : etat(etatInitial) {}
 
 bool Cellule::estVivante() const {
-    return etat->estVivante();
+    return etat;
 }
 
-void Cellule::definirEtat(EtatCellule* nouvelEtat) {
+void Cellule::definirEtat(bool nouvelEtat) {
     etat = nouvelEtat;
 }

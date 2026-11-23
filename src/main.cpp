@@ -17,7 +17,7 @@ int main() {
     grille.activerModeTorique();
 
     // Utilise les règles du jeu de la vie de Conway.
-    RegleConway regle;
+    RegleEvolution regle;
 
     for (int iteration = 0; iteration < nombreIterations; iteration +=1) {
         // Attend une demi-seconde avant de calculer la génération suivante.

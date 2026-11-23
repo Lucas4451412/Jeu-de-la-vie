@@ -1,6 +1,6 @@
 #include "RegleEvolution.h"
 
-bool RegleConway::determinerEtatSuivant(bool vivante, int voisinsVivants) const {
+bool RegleEvolution::determinerEtatSuivant(bool vivante, int voisinsVivants) const {
     if (vivante) {
         // Une cellule vivante survit avec 2 ou 3 voisines vivantes.
         if (voisinsVivants == 2 || voisinsVivants == 3) {
@@ -15,3 +15,4 @@ bool RegleConway::determinerEtatSuivant(bool vivante, int voisinsVivants) const 
 
     return false;
 }
+

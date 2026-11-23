@@ -22,8 +22,6 @@ Grille lireGrille(const std::string& nomFichier) {
     // Le constructeur attend la largeur, puis la hauteur.
     Grille grille(largeur, hauteur);
 
-    // Les cellules gardent cette adresse après la fin de la fonction.
-    static EtatVivante etatVivant;
 
     for (int ligne = 0; ligne < hauteur; ++ligne) {
         for (int colonne = 0; colonne < largeur; ++colonne) {
@@ -36,7 +34,7 @@ Grille lireGrille(const std::string& nomFichier) {
             // Toutes les cellules sont mortes à la création de la grille.
             // Un 1 dans le fichier rend vivante la cellule correspondante.
             if (valeur == 1) {
-                grille.definirEtatCellule(ligne, colonne, &etatVivant);
+                grille.definirEtatCellule(ligne, colonne, true);
             }
         }
     }

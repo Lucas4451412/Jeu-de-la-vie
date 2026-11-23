@@ -93,9 +93,9 @@ const Cellule& Grille::getCellule(int ligne, int colonne) const {
 }
 
 // Change l'état de la cellule et indique si l'opération a réussi.
-bool Grille::definirEtatCellule(int ligne, int colonne, EtatCellule* nouvelEtat) {
+bool Grille::definirEtatCellule(int ligne, int colonne, bool nouvelEtat) {
     // Refuse les coordonnées hors grille ou un pointeur nul.
-    if (!positionValide(ligne, colonne) || nouvelEtat == nullptr) {
+    if (!positionValide(ligne, colonne)) {
         return false;
     }
 
@@ -119,18 +119,11 @@ void Grille::evoluer(const RegleEvolution& regle) {
         }
     }
 
-    static EtatVivante etatVivant;
-    static EtatMorte etatMort;
-
     // 2. Appliquer les nouveaux états une fois tous les calculs terminés.
     for (int ligne = 0; ligne < hauteur; ligne += 1) {
         for (int colonne = 0; colonne < largeur; colonne += 1) {
-            if (etatsSuivants[ligne][colonne]) {
-                cellules[ligne][colonne].definirEtat(&etatVivant);
-            } 
-            else {
-                cellules[ligne][colonne].definirEtat(&etatMort);
-            }
+            const bool nouvelEtat = etatsSuivants[ligne][colonne];
+            cellules[ligne][colonne].definirEtat(nouvelEtat);
         }
     }
 }
