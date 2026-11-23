@@ -36,7 +36,7 @@ public:
     }
     
     void activerModeTorique(bool actif = true) {
-    torique = actif;
+        torique = actif;
     }
 
     int getlargeur() const;

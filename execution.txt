@@ -1,0 +1,7 @@
+cd ..\src
+g++ -std=c++17 -Wall -Wextra -I "..\include" main.cpp Cellule.cpp Grille.cpp RegleEvolution.cpp lecture_fichier.cpp -o JeuDeLaVie.exe
+
+if ($LASTEXITCODE -eq 0) {
+    cd ..\Grille
+    ..\src\JeuDeLaVie.exe
+}

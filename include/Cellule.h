@@ -1,4 +1,12 @@
-class EtatCellule;
+// Classe abstraite représentant un état possible d'une cellule.
+class EtatCellule {
+public:
+    // Impose aux classes dérivées d'indiquer si l'état est vivant.
+    virtual bool estVivante() const = 0;
+
+    // Permet de détruire correctement un état via un pointeur EtatCellule.
+    virtual ~EtatCellule() {}
+};
 
 // Représente une cellule de la grille et permet de gérer son état.
 class Cellule {
@@ -15,16 +23,6 @@ public:
     void definirEtat(EtatCellule* nouvelEtat);
 };
 
-
-// Classe abstraite représentant un état possible d'une cellule.
-class EtatCellule {
-public:
-    // Impose aux classes dérivées d'indiquer si l'état est vivant.
-    virtual bool estVivante() const = 0;
-
-    // Permet de détruire correctement un état via un pointeur EtatCellule.
-    virtual ~EtatCellule() {}
-};
 
 
 // Représente l'état vivant d'une cellule.
