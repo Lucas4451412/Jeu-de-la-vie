@@ -6,7 +6,7 @@
 #include "RegleEvolution.h"
 
 int main() {
-    const std::string nomFichier = "grille.txt";
+    const std::string nomFichier = "Grille/grille.txt";
     const int nombreIterations = 50;
     const auto delai = std::chrono::milliseconds(500);
 
