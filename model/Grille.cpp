@@ -109,7 +109,7 @@ const Cellule& Grille::getCellule(int ligne, int colonne) const {
 }
 
 // Change l'état de la cellule et indique si l'opération a réussi.
-bool Grille::definirEtatCellule(int ligne, int colonne, EtatCellule* nouvelEtat) {
+bool Grille::definirEtatCellule(int ligne, int colonne, const EtatCellule* nouvelEtat) {
     // Refuse les coordonnées hors grille ou un pointeur nul.
     if (!positionValide(ligne, colonne) || nouvelEtat == nullptr) {
         return false;
@@ -121,32 +121,24 @@ bool Grille::definirEtatCellule(int ligne, int colonne, EtatCellule* nouvelEtat)
 
 
 void Grille::evoluer(const RegleEvolution& regle) {
-    std::vector<std::vector<bool>> etatsSuivants(
-        hauteur, std::vector<bool>(largeur)
+    std::vector<std::vector<const EtatCellule*>> etatsSuivants(
+        hauteur, std::vector<const EtatCellule*>(largeur, nullptr)
     );
 
     // 1. Calculer les prochains états à partir de la grille actuelle.
-    for (int ligne = 0; ligne < hauteur; ++ligne) {
-        for (int colonne = 0; colonne < largeur; colonne += 1) {
-            bool vivante = cellules[ligne][colonne].estVivante();
+    for (int ligne = 0; ligne < hauteur; ligne++) {
+        for (int colonne = 0; colonne < largeur; colonne++) {
+            const EtatCellule* etatActuel = cellules[ligne][colonne].getEtat();
             int voisinsVivants = compterVoisinsVivants(ligne, colonne);
 
-            etatsSuivants[ligne][colonne] = regle.determinerEtatSuivant(vivante, voisinsVivants);
+            etatsSuivants[ligne][colonne] = regle.determinerEtatSuivant(etatActuel, voisinsVivants);
         }
     }
 
-    static EtatVivante etatVivant;
-    static EtatMorte etatMort;
-
     // 2. Appliquer les nouveaux états une fois tous les calculs terminés.
-    for (int ligne = 0; ligne < hauteur; ligne += 1) {
-        for (int colonne = 0; colonne < largeur; colonne += 1) {
-            if (etatsSuivants[ligne][colonne]) {
-                cellules[ligne][colonne].definirEtat(&etatVivant);
-            } 
-            else {
-                cellules[ligne][colonne].definirEtat(&etatMort);
-            }
+    for (int ligne = 0; ligne < hauteur; ligne++) {
+        for (int colonne = 0; colonne < largeur; colonne++) {
+            cellules[ligne][colonne].definirEtat(etatsSuivants[ligne][colonne]);
         }
     }
 }

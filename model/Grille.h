@@ -38,7 +38,7 @@ public:
     const Cellule& getCellule(int ligne, int colonne) const;
 
     // Change l'état d'une cellule et renvoie true si l'opération réussit.
-    bool definirEtatCellule(int ligne, int colonne, EtatCellule* nouvelEtat);
+    bool definirEtatCellule(int ligne, int colonne, const EtatCellule* nouvelEtat);
 
     // Applique la règle à toute la grille pour passer à la génération suivante.
     void evoluer(const RegleEvolution& regle);
