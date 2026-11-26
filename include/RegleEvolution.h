@@ -1,4 +1,4 @@
-
+#pragma once
 
 // Définit la méthode commune à toutes les règles d'évolution.
 class RegleEvolution {

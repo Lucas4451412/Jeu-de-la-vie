@@ -1,3 +1,5 @@
+#pragma once
+
 // Classe abstraite représentant un état possible d'une cellule.
 class EtatCellule {
 public:

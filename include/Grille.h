@@ -1,8 +1,9 @@
-#include <stdexcept>
-#include <vector>
-#include "Cellule.h"
+#pragma once
 
-// Indique que la classe RegleEvolution existe.
+#include <vector>
+#include "Cellule.h" // Nécessaire pour le tableau de cellules uniquement.
+
+// Indique que la classe RegleEvolution existe. Evite d'inclure le fichier entier.
 class RegleEvolution;
 
 // Représente la grille du Jeu de la vie.

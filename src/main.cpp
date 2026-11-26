@@ -19,7 +19,7 @@ int main() {
     // Utilise les règles du jeu de la vie de Conway.
     RegleConway regle;
 
-    for (int iteration = 0; iteration < nombreIterations; iteration +=1) {
+    for (int i = 0; i < nombreIterations; i++) {
         // Attend une demi-seconde avant de calculer la génération suivante.
         std::this_thread::sleep_for(delai);
         grille.evoluer(regle);
@@ -31,7 +31,7 @@ int main() {
         std::cout << "\x1B[2J\x1B[H";
 
         // La boucle commence à 0, mais la première génération affichée est la 1.
-        std::cout << "Generation " << iteration + 1 << '\n';
+        std::cout << "Generation " << i + 1 << '\n';
         afficherGrille(grille);
     }
 }
