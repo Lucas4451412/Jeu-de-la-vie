@@ -1,1 +1,23 @@
+# Dossier de compilation généré par le Makefile
+build/
+
+# Fichiers compilés et exécutables (Linux & Windows)
+*.o
+*.obj
 *.exe
+*.out
+app
+
+# Fichiers de sortie / logs générés à l'exécution
+execution.txt
+*_out.txt
+
+# Configuration locale de l'éditeur (VS Code)
+.vscode/
+
+# Fichiers temporaires système
+.DS_Store
+Thumbs.db
+
+# Grille
+grille.txt
